@@ -1,16 +1,16 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 ; ============================================================================
-;  Keychron AZERTY Mac (ISO francais) sur Windows
-;  - Interrupteur du Keychron sur "Mac"
-;  - Disposition Windows : "Francais (France)" AZERTY
+;  Keychron French AZERTY Mac keyboard (ISO) on Windows
+;  - Keychron switch set to "Mac"
+;  - Windows keyboard layout: "French (France)" AZERTY
 ; ============================================================================
 
-; Si la touche "@ #" (a gauche du 1) affiche "<" et que la touche "< >"
-; (a cote de Maj gauche) affiche "²", passe cette valeur a true.
-INVERSER := false
+; If the "@ #" key (left of 1) types "<" and the "< >" key
+; (next to left Shift) types "²", set this to true.
+SWAP_KEYS := false
 
-if INVERSER {
+if SWAP_KEYS {
     Hotkey "SC056",  (*) => SendText("@")
     Hotkey "+SC056", (*) => SendText("#")
     Hotkey "!SC056", (*) => SendText("•")
@@ -20,36 +20,36 @@ if INVERSER {
     Hotkey "SC029",  (*) => SendText("@")
     Hotkey "+SC029", (*) => SendText("#")
     Hotkey "!SC029", (*) => SendText("•")
-    ; La touche "< >" est deja correcte sous Windows.
+    ; The "< >" key already works correctly on Windows.
 }
 
-; ===== command = Ctrl (cmd+C, cmd+V, cmd+Z, cmd+Shift+T, cmd+clic...) =====
+; ===== command = Ctrl (cmd+C, cmd+V, cmd+Z, cmd+Shift+T, cmd+click...) =====
 LWin::LCtrl
 RWin::RCtrl
 
-; ===== Rangee des chiffres =====
-; & é " ' ( et è ç à ) sont deja identiques a Windows.
-SC007::SendText "§"          ; touche 6       (§ / 6)
-SC009::SendText "!"          ; touche 8       (! / 8)
-SC00D::SendText "-"          ; touche apres ) (- / _)
+; ===== Number row =====
+; & é " ' ( and è ç à ) already match Windows.
+SC007::SendText "§"          ; 6 key          (§ / 6)
+SC009::SendText "!"          ; 8 key          (! / 8)
+SC00D::SendText "-"          ; key after )    (- / _)
 +SC00D::SendText "_"
 
-; ===== Rangee A Z E R T Y =====
-; ^ ¨ est deja correct.
-+SC01B::SendText "*"         ; touche $       ($ / *)
+; ===== A Z E R T Y row =====
+; ^ ¨ already matches.
++SC01B::SendText "*"         ; $ key          ($ / *)
 !SC01B::SendText "€"         ; option + $
 
-; ===== Rangee Q S D F G H =====
-; ù % est deja correct.
-SC02B::SendText "``"         ; touche a cote d'Entree (` / £)
+; ===== Q S D F G H row =====
+; ù % already matches.
+SC02B::SendText "``"         ; key next to Enter (` / £)
 +SC02B::SendText "£"
 
-; ===== Rangee W X C V B N =====
-; , ?   ; .   : /  sont deja corrects.
-SC035::SendText "="          ; derniere touche avant Maj droite (= / +)
+; ===== W X C V B N row =====
+; , ?   ; .   : /  already match.
+SC035::SendText "="          ; last key before right Shift (= / +)
 +SC035::SendText "+"
 
-; ===== Caracteres avec option (comme sur Mac) =====
+; ===== option characters (same as macOS) =====
 !SC006::SendText "{"         ; option + (
 !+SC006::SendText "["        ; option + Shift + (
 !SC00C::SendText "}"         ; option + )
