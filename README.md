@@ -1,57 +1,57 @@
 # mac-keyboard-on-windows-autohotkey
 
-Script AutoHotkey v2 qui rend un **clavier Keychron AZERTY Mac (ISO français)** entièrement fonctionnel sous Windows : les caractères correspondent à ce qui est gravé sur les touches, `command` fait Ctrl et `option` donne les caractères spéciaux comme sur macOS.
+AutoHotkey v2 script that makes a **Keychron French AZERTY Mac keyboard (ISO)** fully usable on Windows: every key types what is printed on it, `command` acts as Ctrl, and `option` gives the same special characters as on macOS.
 
-**Aucun droit administrateur n'est nécessaire.**
+**No administrator rights required.**
 
-## Prérequis
+## Requirements
 
-- Interrupteur du Keychron sur **Mac**. En mode Windows, `option` et `command` sont échangées et le script ne fonctionne pas correctement.
-- Disposition Windows : **Français (France)**, en AZERTY standard.
-- [AutoHotkey v2](https://www.autohotkey.com/), version **zip** (portable, sans installation).
+- Keychron switch set to **Mac**. In Windows mode, `option` and `command` are swapped and the script won't behave correctly.
+- Windows keyboard layout: **French (France)**, standard AZERTY.
+- [AutoHotkey v2](https://www.autohotkey.com/), **zip** version (portable, no install).
 
 ## Installation
 
-1. Télécharger AutoHotkey v2 en zip et le dézipper, par exemple dans `Documents\AHK`.
-2. Placer `clavier-mac.ahk` dans le même dossier.
-3. Glisser `clavier-mac.ahk` sur `AutoHotkey64.exe`. Une icône verte « H » apparaît près de l'horloge.
+1. Download AutoHotkey v2 as a zip and extract it, e.g. to `Documents\AHK`.
+2. Put `clavier-mac.ahk` in the same folder.
+3. Drag `clavier-mac.ahk` onto `AutoHotkey64.exe`. A green "H" icon appears near the clock.
 
-### Lancement au démarrage
+### Run at startup
 
-1. `Win + R` → taper `shell:startup` → Entrée.
-2. Y créer un raccourci vers `clavier-mac.ahk`.
+1. `Win + R` → type `shell:startup` → Enter.
+2. Create a shortcut to `clavier-mac.ahk` in that folder.
 
-### Arrêter ou recharger
+### Stop or reload
 
-Clic droit sur l'icône « H » → **Exit** (arrêter) ou **Reload Script** (recharger après une modification).
+Right-click the "H" icon → **Exit** (stop) or **Reload Script** (after editing).
 
-## Ce que fait le script
+## What the script does
 
-### Touches modificatrices
+### Modifier keys
 
-| Touche | Comportement |
+| Key | Behavior |
 |---|---|
-| `command` (gauche et droite) | Ctrl → `cmd+C`, `cmd+V`, `cmd+Z`, `cmd+Shift+T`, `cmd+clic`… |
-| `option` | Alt + caractères spéciaux (voir plus bas) |
-| `control` | Ctrl (inchangé) |
+| `command` (left and right) | Ctrl → `cmd+C`, `cmd+V`, `cmd+Z`, `cmd+Shift+T`, `cmd+click`… |
+| `option` | Alt + special characters (see below) |
+| `control` | Ctrl (unchanged) |
 
-### Touches remappées
+### Remapped keys
 
-| Touche | Seule | Avec Shift |
+| Key | Alone | With Shift |
 |---|---|---|
-| `@ #` (à gauche du 1) | `@` | `#` |
+| `@ #` (left of 1) | `@` | `#` |
 | `6` | `§` | `6` |
 | `8` | `!` | `8` |
-| `- _` (après le `)`) | `-` | `_` |
-| `$ *` (à côté du P) | `$` | `*` |
-| `` ` £ `` (à côté d'Entrée) | `` ` `` | `£` |
-| `= +` (avant Maj droite) | `=` | `+` |
+| `- _` (after `)`) | `-` | `_` |
+| `$ *` (next to P) | `$` | `*` |
+| `` ` £ `` (next to Enter) | `` ` `` | `£` |
+| `= +` (before right Shift) | `=` | `+` |
 
-Les autres touches (`& é " ' ( è ç à )`, `^ ¨`, `ù %`, `< >`, `, ? ; . : /`) sont déjà correctes sous Windows et ne sont pas modifiées.
+All other keys (`& é " ' ( è ç à )`, `^ ¨`, `ù %`, `< >`, `, ? ; . : /`) already match on Windows and are left untouched.
 
-### Caractères avec `option`
+### `option` characters
 
-| Combinaison | Caractère |
+| Shortcut | Character |
 |---|---|
 | `option + (` | `{` |
 | `option + )` | `}` |
@@ -68,19 +68,19 @@ Les autres touches (`& é " ' ( è ç à )`, `^ ¨`, `ù %`, `< >`, `, ? ; . : /
 | `option + A` | `æ` |
 | `option + R` | `®` |
 
-Utiliser l'`option` **de gauche**.
+Use the **left** `option` key.
 
-## Limites connues
+## Known limitations
 
-- **`cmd + Tab`** envoie Ctrl+Tab (changement d'onglet). Pour changer d'application : `option + Tab`.
-- **Fenêtres lancées en administrateur** : le script n'a pas d'effet dedans, puisqu'il tourne sans droits admin.
-- **`Alt + Shift`** peut changer de langue de clavier si plusieurs dispositions sont installées dans Windows. Garder uniquement « Français (France) » évite le problème.
-- `` ` `` et `~` sont tapés directement, pas en touche morte.
+- **`cmd + Tab`** sends Ctrl+Tab (switches browser tabs). To switch apps, use `option + Tab`.
+- **Windows run as administrator**: the script has no effect there, since it runs without admin rights.
+- **`Alt + Shift`** may switch keyboard language if several layouts are installed in Windows. Keeping only "French (France)" avoids this.
+- `` ` `` and `~` are typed directly, not as dead keys.
 
-## Dépannage
+## Troubleshooting
 
-**Les touches `@ #` et `< >` sont inversées** (la touche `@ #` donne `<` et la touche `< >` donne `²`) : ouvrir le fichier, passer `INVERSER := false` à `INVERSER := true` en haut, puis recharger le script.
+**`@ #` and `< >` keys are swapped** (the `@ #` key types `<` and the `< >` key types `²`): open the file, change `INVERSER := false` to `INVERSER := true` at the top, then reload the script.
 
-**Une touche donne le mauvais caractère** : clic droit sur l'icône « H » → **Open** → `View` → **Key history**, appuyer sur la touche, puis relever son code `SC` pour corriger le script.
+**A key types the wrong character**: right-click the "H" icon → **Open** → `View` → **Key history**, press the key, and note its `SC` code to fix the script.
 
-**Les caractères spéciaux (`€`, `§`, `£`) s'affichent mal** : enregistrer le fichier en **UTF-8**.
+**Special characters (`€`, `§`, `£`) display incorrectly**: save the file as **UTF-8**.
